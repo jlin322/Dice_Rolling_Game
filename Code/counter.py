@@ -1,8 +1,5 @@
 '''
-Jolin Lin
-jlin322@binghamton.edu
-Section B55, CA: Chris and Owen
-Lab 11, Part I
+Team Members: Jolin Lin and Amy Havill
 '''
 
 class Counter:
