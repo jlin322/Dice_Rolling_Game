@@ -5,7 +5,7 @@ This project is a Python-based graphical application designed to simulate a dice
 
 ## How to Install
 1. Download the code from Github and open it in your preferred code editor (e.g. Visual Studio Code).
-2. Check if your desktop has the lastest python application installed. If not, install it.
+2. Check if your desktop has the latest python application installed. If not, install it.
 3. Run the dicegui.py from terminal.
 4. A window will pop up prompting you to input the number of dice you would like to simulate. Click the enter key.
 5. Another window will pop up asking for the user input on the number of sides there should be on a die. Click the enter key and press the roll button various times
