@@ -18,6 +18,7 @@ This project is a Python-based graphical application designed to simulate a dice
 Image on the left depicts the starting window and the image on the right depicts the secondary window that pops up upon inputting the number of dice.
 
 ## Credits
+- Partner: Amy Havill
 - Links to websites I found useful:
   - [Python Documentation on tkinter](https://docs.python.org/3/library/tkinter.html)
   - [GeeksforGeeks Python GUI: tkinter](https://www.geeksforgeeks.org/python-gui-tkinter/)
