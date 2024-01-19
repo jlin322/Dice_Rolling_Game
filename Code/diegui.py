@@ -1,5 +1,5 @@
 '''
-Jolin Lin, Amy Havill
+Team Members: Jolin Lin, Amy Havill
 '''
 
 '''
@@ -34,50 +34,38 @@ Classes Used:
 #### Since this is a CHILD GUI, the invocation of mainloop() 
 #### will take place in the parentGUI except for testing
 
-# 1. define imports
 from tkinter import *
 from tkinter import messagebox
 from diemultisided import *
 
-# 2. define class
 class DieGUI:
   
 #-- Constructor ---------------------------------------------------------------
   
-  # 3. define constructor, parent parameter
+  # Constructor defined with parent parameter
   # param parent GUI (DiceGUI) - owner of this instance
   def __init__(self, parent):
 
-    # 4. Create null model for now (so we have a reference for later)
-    self.__die = None  # Will be created from dieStr.DieMultiSided(sides) 
+    # null model created
+    self.__die = None 
 
-    # 5. Retrieve parent GUI object and get parent frame from it
-    # This object's widgets will live in parent frame or window
+    # Retrieve parent GUI object and get parent frame from it
     self.__parent = parent
-    self.__parent_frame = self.__parent.get_dice_frame() # in DiceGUI class
+    self.__parent_frame = self.__parent.get_dice_frame() 
 
-    # 6. Create frame for this die's widgets
     #self.win = Tk()
     self.die_frame = Frame(self.__parent_frame)
     #self.mid_frame = Frame(self.win)
     
-    # 7. Create static label and entry box for creating die (inside frame from #6)
-    # Bind entry box to create_die event handler (#14-18)
-    # User must specify number of sides before creation
+    # static label and entry box for creating die
     self.sides_label = Label(self.die_frame, text = 'Sides')
     self.entry_sides = Entry(self.die_frame, width = 2)
     self.entry_sides.bind('<Return>', self.create_die)
     
-
-    # 8. Create button controller (inside frame from #6) for rolling die
-    # set event handler to roll_die (#19-21)
-    # make sure that button is 'disabled' to start
     self.roll_button = Button(self.die_frame, text = 'ROLL', command = self.roll_die)
     self.roll_button.config(state = 'disable')
     #self.roll_button.pack(sides = 'right')
 
-    # 9. Create and set up StringVar and dynamic label viewer (inside frame from #6)
-    #    to display the value that was rolled
     # Initialize StringVar to '  ' to start
     #self.sum = Label(self.die_frame, text = 'Sum')
     self.roll_value = StringVar()
@@ -85,7 +73,7 @@ class DieGUI:
     self.display_value = Label(self.die_frame, textvariable = self.roll_value)
     self.value_num = Label(self.die_frame, textvariable = self.roll_value)
 
-    # 10. Pack the widgets from side to side into the die_frame (#6)
+    # Pack widgets from side to side into die_frame
     #self.die_frame.pack()
     self.sides_label.pack(side = 'left')
     self.entry_sides.pack(side = 'left')
@@ -94,114 +82,69 @@ class DieGUI:
     #self.display_value.pack(sides = 'up')
     self.value_num.pack(side = 'right')
     
-    # 11. Pack the die_frame (#6) into the parent frame
+    # Pack the die_frame into parent frame
     self.die_frame.pack()
     
 
 #-- Accessors -----------------------------------------------------------------
-
-  #  12. Create Accessors
-  
-  # retrieve die_frame (Frame) (#6)
   def get_frame(self):
     return self.die_frame
 
-
-  # invoke get() (StringVar)  
-  # retrieve roll_value (StringVar)
   def get_roll_value(self):
     return self.roll_value.get()
 
 
 #-- Mutators ------------------------------------------------------------------
-
-  # 13. Create Mutators
-    
-  # Reset before next turn
-  # invoke:
-  #  reset() (DieMultiSided)
-  #  set() (StringVar)
-  #  __str__() (DieMultiSided)
-  #  enable_roll() (self)
   def reset_die(self):
     self.__die.reset()
     self.roll_value.set('')
     self.enable_roll()
-
-
-  # Enable roll_button after all dice have been created and after each turn
-  # invokes:
-  #  config (Button)
+    
   def enable_roll(self):
     self.roll_button.config(state = 'normal')
 
 
   #-- EVENT HANDLERs ----------------------------------------------------------
-
-  # Create die with given number of sides
-  # invoke:
-  #   get() (Entry)
-  #   config() (Entry)
-  #   __is_valid()  (DieGUI)
-  #   __str__() (DieMultiSided)
-  #   increment_number_created() (DiceGUI)
-  #   all_dice_have_been_created() (DiceGUI)
-  #   enable_roll_buttons() (DiceGUI)
   def create_die(self, event):
-    # 14. Get number of sides on die string from entry box
+    # Get number of sides on die string from entry box
     num_sides = self.entry_sides.get()
     try:
-      # 15. Check for invalid entry (e.g.,number of sides str isn't all digits, etc.)
+      # Check for invalid entry (e.g.,number of sides str isn't all digits, etc.)
       if not(num_sides.isdigit() and int(num_sides) > 0):
-        # and if so, Raise BadArgument exception
         raise BadArgument()
-      # Otherwise:
-      # 16. Create model and disable entry box
       else:
         self.__die = DieMultiSided(int(num_sides))
         self.entry_sides.config(state = 'disable')
 
-      # 17. Let parent know that another die has been created
+      # Let parent know that another die has been created
       self.__parent.all_dice_have_been_created()
       
-      # 18. Have parent enable all roll buttons if all dice have been created
+      # Have parent enable all roll buttons if all dice have been created
       if self.__parent.all_dice_have_been_created():
         self.__parent.enable_roll_buttons()
       
-    # 19. handle invalid entry
+    # handle invalid entry
     except BadArgument as e:  
-      # 18. Warn user, clear entry box
+      # Warn user, clear entry box
       messagebox.showwarning('Warning', 'Input not valid')
       self.entry_sides.delete(0, END)
         
-    
-  # Roll die, set value, increment parent's roll counter, disable button
-  # Sum rolls if all other dice have been rolled
-  # invoke:
-  #   roll() (DieMultiSided)
-  #   set() (StringVar)
-  #   __str__() (DieMultiSided)
-  #   config() (Button)
-  #   increment_roll_counter() (DiceGUI)
-  #   all_dice_have_been_rolled() (DiceGUI)
-  #   sum_rolls() (DiceGUI)
   def roll_die(self):
-    # 19. Roll the die and set the StringVar with the die value
+    # Roll the die and set the StringVar with the die value
     self.__die.roll()
     self.roll_value.set(self.__die)
 
-    # 20. Let parent know that die has been rolled and disable roll button
+    # Let parent know that die has been rolled and disable roll button
     self.__parent.all_dice_have_been_rolled()
     self.__parent.increment_roll_counter()
     self.roll_button.config(state = 'disabled')
 
-    # 21. Have parent sum the rolls if all dice have been rolled
+    # Have parent sum the rolls if all dice have been rolled
     if self.__parent.all_dice_have_been_rolled():
       self.__parent.sum_rolls()
 
  
 # -----------------------------------------------------------------------------
-
 # Test Class
 # Minimal parent GUI class for testing purposes ONLY!
 class Parent:
@@ -233,8 +176,6 @@ class Parent:
     
   # ---------------------------------------------------------------------------
   # Stubbed versions of all necessary parent GUI methods
-  # For testing purposes there will only be one die GUI at a time, so as
-  #   little code as possible has been written
 
   # return the frame that will hold the die GUI
   def get_dice_frame(self):
@@ -268,8 +209,6 @@ class Parent:
 
 # -----------------------------------------------------------------------------
 
-
-# Write main() tester class to create parent GUIS to exercise one at a time
 def main():
   reg1 = Parent() # create 4-sided die
   # Press <Enter> after entering 4 in the entry box

@@ -1,16 +1,11 @@
 '''
-Jolin Lin, Amy Havill
+Team Members: Jolin Lin, Amy Havill
 '''
 
 import random
 import tkinter.messagebox
-'''
-User defined exception class (subclass of Exception)
-'''
 
-# your code here
 class BadArgument(Exception):
-
   def __init__(self):
     self.__title = 'Bad Argument'
     self.__message = 'Sides must be greater than or equal to four'
@@ -23,11 +18,6 @@ class BadArgument(Exception):
 
 #raise BadArgument()
 
-'''
-Models a single multi-sided die
-'''
-
-# your code here
 class DieMultiSided():
   MIN_SIDES = 4 # each die must have 4 or more sides
   NOT_YET_ROLLED = -1 # initial value before rolling
@@ -58,8 +48,6 @@ class DieMultiSided():
     return '' if (self.__value == DieMultiSided.NOT_YET_ROLLED) else str(self.__value)
                   
 DieMultiSided()
-
-
 
 # Tester for DieMultiSided class
 def main():
@@ -109,4 +97,4 @@ def main():
   
 if __name__ == '__main__':
   main()
-
+  

@@ -35,11 +35,11 @@ class Counter:
     if can_decrement(self) == True:
       self.__count -= 1
 
-  # 'toString'
   def __str__(self):
     return f'count = {self.__count}'
 
 def main():
+  
   counter1 = Counter()
   counter1.increment()
   print(counter1.get_count())
@@ -49,7 +49,6 @@ def main():
   print(counter1.get_count())
   counter1.reset()
   print(counter1)
-  # add tests for the new functionality
 
 if __name__ == '__main__':
   main()
