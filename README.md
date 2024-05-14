@@ -13,8 +13,8 @@ This project is a Python-based graphical application designed to simulate a dice
 
 ## Visual Aid
 <p float="left">
- <img src="images/startingWindow.jpg" width = "200" height="125" />
-  <img src="images/secondarywindow.jpg" width="200" height="125" />
+ <img src="images/Entire Design.jpg" width = "200" height="125" />
+  <img src="images/Keypad and Base Station.jpg" width="200" height="125" />
 </p>
 Image on the left depicts the starting window and the image on the right depicts the secondary window that pops up upon inputting the number of dice.
 
