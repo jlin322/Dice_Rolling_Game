@@ -11,6 +11,15 @@ This project is a Python-based graphical application designed to simulate a dice
 5. Another window will pop up asking for the user input on the number of sides there should be on a die. Click the enter key and press the roll button various times
 6. The sum of the values of each dice roll is calculated and the player with the highest sum wins.
 
+## How to Play
+1. Enter the amount of die/dice to be generated and press <Enter>. The number die/dice be a whole integer greater than 0.
+   
+2. Enter the amount of sides per die and press <Enter> after each entry. The number sides must be a whole integer greater than three.
+   
+3. Press the ROLL button for each dice. A random integer between one and the number of sides will appear to the right. These numbers will then be summed and displayed in the area circled below. 
+4. Press the Reset button to clear the sum and reset the die/dice.
+5. Continue to play the game by pressing the “ROLL” buttons. (Note: Number of dice cannot be changed once set. In order to change the number of dice, you will have to run the entire module again.
+
 ## Visual Aid
 <p float="left">
  <img src="images/startingWindow.jpg" width = "200" height="125" />
