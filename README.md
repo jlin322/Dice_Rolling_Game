@@ -14,19 +14,19 @@ This project is a Python-based graphical application designed to simulate a dice
 ## How to Play
 1. Enter the amount of die/dice to be generated and press <Enter>. The number die/dice be a whole integer greater than 0.
    <p float="left">
-    <img src="images/diceGui1.jpg" width = "500" height="125" />
+    <img src="images/diceGui1.JPG" width = "150" height="125" />
    </p>
 2. Enter the amount of sides per die and press <Enter> after each entry. The number sides must be a whole integer greater than three.
    <p float="left">
-    <img src="images/diceGui2.jpg" width = "500" height="125" />
+    <img src="images/diceGui2.JPG" width = "150" height="125" />
    </p> 
 3. Press the ROLL button for each dice. A random integer between one and the number of sides will appear to the right. These numbers will then be summed and displayed in the area circled below.
    <p float="left">
-    <img src="images/diceGui3.jpg" width = "500" height="125" />
+    <img src="images/diceGui3.JPG" width = "400" height="125" />
    </p>
 4. Press the Reset button to clear the sum and reset the die/dice.
    <p float="left">
-    <img src="images/diceGui4.jpg" width = "500" height="125" />
+    <img src="images/diceGui4.JPG" width = "400" height="125" />
    </p>
 5. Continue to play the game by pressing the “ROLL” buttons. (Note: Number of dice cannot be changed once set. In order to change the number of dice, you will have to run the entire module again.
 
@@ -42,11 +42,11 @@ This project is a Python-based graphical application designed to simulate a dice
    - All entry boxes must be filled out and all die/dice must be rolled to enable the Reset button 
 5. Error message appears after inputting a value for “Number of Dice: ”
 <p float="left">
- <img src="images/diceGuiTroubleshoot.jpg" width = "500" height="125" />
+ <img src="images/diceGuiTroubleshoot.JPG" width = "400" height="125" />
 </p>
 6. Error message appears after inputting a value for “Sides: ”? 
 <p float="left">
- <img src="images/diceGuiTroubleshoot2.jpg" width = "500" height="125" />
+ <img src="images/diceGuiTroubleshoot2.JPG" width = "400" height="125" />
 </p>
 
 ## Credits
